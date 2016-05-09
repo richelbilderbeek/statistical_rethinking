@@ -66,4 +66,62 @@ Answers:
  4. Yes, this is 'the possibility of the combination of rain and Monday per probability of rain', which simplifies to the probability of Monday
  5. No, this is 'the possibility of the combination of Monday and rain per probability of Monday', which simplifies to the probability of rain
  
+## 2E4
+
+If the probability of water is 70%, this means that 70% of the
+Earth is covered with water.
+
+## 2M1
+
+This is the number of probabilities we will investigate:
+
+```{r}
+n_probabilities <- 20
+testit::assert(n_probabilities >= 1)
+```
+
+Our experiment involves throwing `n_throws` times and observing 
+water `n_water` times.
+
+```{r}
+n_throws <- 9
+n_water <- 6
+testit::assert(n_water <= n_throws)
+```
+
+Here we create a range of `n_probabilities` probabilities from 0 to 1.
+
+```{r}
+p_grid <- seq(from = 0, to = 1, length.out = n_probabilities)
+plot(p_grid, main = "The p_grid values")
+```
+
+Our prior knowledge is that we assume all probabilities are
+equally likely:
+
+```{r}
+prior <- rep(1, n_probabilities)
+plot(prior, main = "Prior", type = "b")
+```
+
+Using the binomial distribution, we can calculatethe likelihood 
+of having `n_water` times water out of `n_throws` throws, for
+our range of probabilities:
+
+
+```{r}
+likelihood <- dbinom(n_water, size = n_throws, prob = p_grid)
+plot(likelihood, main = "Likelihood", type = "b")
+```
+
+We can get our marginal posterior:
+
+```{r}
+posterior <- likelihood * prior / sum(likelihood * prior)
+#unstd_posterior <- likelihood * prior / sum(likelihood * prior)
+#posterior <- unstd_posterioir / sum(unstd_posterior)
+plot(p_grid, posterior, main = "Posterior", type = "b")
+```
+ 
+ 
  
