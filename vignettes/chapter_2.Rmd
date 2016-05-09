@@ -1,0 +1,69 @@
+---
+title: "Chapter 2"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Chapter 2}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Chapter 2
+
+## 2E1
+
+To help my thoughts, I define:
+
+ * Probablity of rain = 1/3
+ * Probability of Monday = 1/7
+
+```{r}
+p_rain <- 1/3
+p_monday <- 1/7
+```
+
+(1) Yes: the probability of rain is independent of which day it is; knowing the day does not give you any new information
+(2) Yes: the is simply the notation of the verbal sentence
+(3) No: the chance that it is Monday is independent of which weather it is. The probability of Monday is something else than the probability of rain. Note that their *values* are the same in countries with a chance of rain of 1/7
+(4) Yes: the chance of rain *and* Monday are 1/21 (it happens once per 21 days on average). Dividing this by the chance it is Monday, results in the chance it rains. You could read the notation as 'the chance of rain and Monday per chance it is Monday'
+
+```{r}
+p_rain <- p_rain # 1
+p_rain_on_monday <- p_rain #2
+p_monday_on_rainy_day <- p_monday # 3
+p_rain_and_monday_per_monday <- p_rain * p_monday / p_monday # 4
+```
+
+Now the answers
+
+```{r}
+answer_1 <- p_rain_on_monday == p_rain
+answer_2 <- p_rain_on_monday == p_rain_on_monday
+answer_3 <- p_rain_on_monday == p_monday_on_rainy_day
+answer_4 <- p_rain_on_monday == p_rain_and_monday_per_monday
+```
+
+Answers:
+
+ 1. `r answer_1`
+ 2. `r answer_2`
+ 3. `r answer_3`
+ 4. `r answer_4`
+
+## 2E2
+
+ 1. No, that would be `Pr(rain, Monday)`
+ 2. No, that would be `Pr(rain| Monday)`
+ 3. Yes, that would be `Pr(Monday| rain)`
+ 4. No, that would be `Pr(Monday, rain)`
+ 
+## 2E3
+
+ 1. Yes, this is the notation of the verbal sentence
+ 2. No, this is 'the possibility of rain (given it is Monday)'
+ 3. No, this is 'the possibility of the combination of rain and Monday'
+ 4. Yes, this is 'the possibility of the combination of rain and Monday per probability of rain', which simplifies to the probability of Monday
+ 5. No, this is 'the possibility of the combination of Monday and rain per probability of Monday', which simplifies to the probability of rain
+ 
+ 

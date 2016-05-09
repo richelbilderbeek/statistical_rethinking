@@ -1,0 +1,14 @@
+Package: statistical_rethinking
+Type: Package
+Title: These are my solutions to the exercises of 'Statistical Rethinking' by Richard McElreath
+Version: 1.0
+Date: 2016-05-09
+Author: Richel Bilderbeek
+Maintainer: richel@richelbilderbeek.nl
+Description:
+  These are my solutions to the exercises of 'Statistical Rethinking' by Richard McElreath.
+  I hope one day people will check these.
+License: file LICENSE
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
